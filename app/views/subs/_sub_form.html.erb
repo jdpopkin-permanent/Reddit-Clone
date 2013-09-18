@@ -1,0 +1,51 @@
+<form action="<%= url %>" method="post">
+
+  <input type="hidden" name="authenticity_token"
+          value="<%= form_authenticity_token %>">
+
+  <input type="hidden" name="sub[moderator]" value="<%= current_user.id %>">
+
+  <label>
+    Name of sub
+    <input type="text" name="sub[name]" value="<%= sub.name %>">
+  </label>
+  <br>
+
+  <h3>Add Links</h3>
+  <% unless sub.persisted? %>
+    <!-- Make a helper for this? -->
+    <% 5.times do |i| %>
+    <br>
+
+    Link <%= (i + 1).to_s %>
+    <br>
+
+    <label>
+      Link name
+      <input type="text" name="links[<%= i.to_s %>][title]"
+        value="<%#= sub.link[i].title unless sub.nil? || sub.link[i].nil? %>">
+    </label>
+    <br>
+
+    <label>
+      Link URL
+      <input type="text" name="links[<%= i.to_s %>][url]"
+          value="<%#= sub.link[i].url unless sub.nil? || sub.link[i].nil? %>">
+    </label>
+    <br>
+
+    <label>
+      Link text
+      <textarea name="links[<%= i.to_s %>][body]"><%#= sub.link[i].body unless sub.nil? || sub.link[i].nil? %></textarea>
+    </label>
+    <br>
+
+    <% end %>
+  <% end %>
+
+  <input type="submit" value="Create Sub">
+</form>
+
+<% flash.now[:errors].try(:each) do |error| %>
+  <%= error.full_message %>
+<% end %>

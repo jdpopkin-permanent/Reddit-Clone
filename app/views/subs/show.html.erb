@@ -1,0 +1,14 @@
+<h3><%= @sub.name %></h3>
+
+<ul>
+  <% @sub.links.each do |link| %>
+  <li>
+    <%= link_to link.title, link.url %>
+    <%= link.body %>
+    <% if current_user && link.user_id == current_user.id %>
+      <%= link_to "Edit this link", edit_link_url(link) %>
+      <%= button_to "Delete this link", link_url(link), method: :delete %>
+    <% end %>
+  </li>
+  <% end %>
+</ul>

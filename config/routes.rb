@@ -1,6 +1,8 @@
 RedditClone::Application.routes.draw do
-  resources :users
-  resource :session
+  resources :users, only: [:create, :new]
+  resource :session, only: [:new, :create, :destroy]
+  resources :subs
+  resources :links, only: [:edit, :update, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
