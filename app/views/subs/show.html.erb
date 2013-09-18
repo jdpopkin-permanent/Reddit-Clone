@@ -1,7 +1,7 @@
 <h3><%= @sub.name %></h3>
 
 <ul>
-  <% @sub.links.each do |link| %>
+  <% @links.each do |link| %>
   <li>
     <%= link.score %>
     <%= link_to link.title, link.url %>

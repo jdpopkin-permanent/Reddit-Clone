@@ -9,6 +9,7 @@ class SubsController < ApplicationController
 
   def show
     @sub = Sub.find(params[:id])
+    @links = @sub.links.sort_by { |link| link.score }.reverse
     render :show
   end
 
