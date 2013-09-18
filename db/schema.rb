@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130918184344) do
+ActiveRecord::Schema.define(:version => 20130918200451) do
+
+  create_table "comments", :force => true do |t|
+    t.integer  "link_id"
+    t.integer  "user_id"
+    t.integer  "parent_comment_id"
+    t.text     "body"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "link_subs", :force => true do |t|
     t.integer  "link_id"

@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
     if @user
       set_current_user(@user)
-      redirect_to user_url(@user)
+      redirect_to subs_url
     else
       @user = User.new(params[:user])
       flash.now[:errors] ||= []

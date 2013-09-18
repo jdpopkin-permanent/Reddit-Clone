@@ -1,0 +1,15 @@
+<%= comment.body %>
+<br>
+
+<%= link_to "Reply to this comment",
+    new_comment_url(link_id: comment.link_id, parent_comment_id: comment.id) %>
+<br>
+
+<ul>
+  <% comment_hash[comment.id].each do |inner_comment| %>
+    <li>
+      <%= render "comment", comment: inner_comment,
+          comment_hash: comment_hash %>
+    </li>
+  <% end %>
+</ul>

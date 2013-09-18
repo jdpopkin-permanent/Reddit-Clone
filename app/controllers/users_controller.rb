@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if user.save
       set_current_user(user)
-      redirect_to user_url(user)
+      redirect_to subs_url
     else
       flash.now[:errors] ||= []
       flash.now[:errors] += user.errors.full_messages

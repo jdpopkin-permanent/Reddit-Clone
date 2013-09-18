@@ -1,8 +1,10 @@
-<form action="<%= link_url(@link) %>" method="post">
+<form action="<%= @url %>" method="post">
   <input type="hidden" name="authenticity_token"
         value="<%= form_authenticity_token %>">
 
-  <input type="hidden" name="_method" value="put">
+  <% if @link.persisted? %>
+    <input type="hidden" name="_method" value="put">
+  <% end %>
 
   <label>
     Link name

@@ -16,6 +16,9 @@
     <%= button_to "Log in", new_session_url, method: :get %>
   <% end%>
 
+  <%= link_to "Subs", subs_url %> <%= link_to "Post Link", new_link_url if current_user %>
+  <br>
+
 <%= yield %>
 
 </body>

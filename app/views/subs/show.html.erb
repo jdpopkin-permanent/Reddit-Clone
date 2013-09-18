@@ -5,6 +5,7 @@
   <li>
     <%= link_to link.title, link.url %>
     <%= link.body %>
+    <%= link_to "Comments", link_url(link) %>
     <% if current_user && link.user_id == current_user.id %>
       <%= link_to "Edit this link", edit_link_url(link) %>
       <%= button_to "Delete this link", link_url(link), method: :delete %>
