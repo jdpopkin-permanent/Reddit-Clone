@@ -1,6 +1,7 @@
 class LinksController < ApplicationController
   def edit
-
+    @link = Link.find(params[:id])
+    render :edit
   end
 
   def update
