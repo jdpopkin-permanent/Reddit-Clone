@@ -4,6 +4,11 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 6, allow_nil: true}
   validates :password_digest, presence: true
 
+  has_many :user_votes, class_name: "UserVote", primary_key: :id,
+          foreign_key: :user_id
+
+  has_many :votes, through: :user_votes, source: :link, inverse_of: :voters
+
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)
   end

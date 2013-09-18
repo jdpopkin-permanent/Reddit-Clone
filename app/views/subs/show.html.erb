@@ -3,6 +3,7 @@
 <ul>
   <% @sub.links.each do |link| %>
   <li>
+    <%= link.score %>
     <%= link_to link.title, link.url %>
     <%= link.body %>
     <%= link_to "Comments", link_url(link) %>
@@ -10,6 +11,8 @@
       <%= link_to "Edit this link", edit_link_url(link) %>
       <%= button_to "Delete this link", link_url(link), method: :delete %>
     <% end %>
+    <%= button_to("Upvote", link_votes_url(link, user_vote: { vote: 1, user_id: current_user.id, link_id: link.id }), method: :post) %>
+    <%= button_to("Downvote", link_votes_url(link, user_vote: { vote: -1, user_id: current_user.id, link_id: link.id }), method: :post) %>
   </li>
   <% end %>
 </ul>
